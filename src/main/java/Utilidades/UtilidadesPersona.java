@@ -60,7 +60,7 @@ public class UtilidadesPersona {
 
         if(!letraFinalBuscada.equalsIgnoreCase(String.valueOf(letraFinal))){
             return false;
-        }
+        };
         return true;
     }
     public static boolean esNIFValido(Persona p){
@@ -112,14 +112,14 @@ public class UtilidadesPersona {
     public static boolean esMayorEdad(Persona p){
         if(getEdad(p) < 18){
             return false;
-        }
+        };
         return true;
     }
 
     public static boolean esMenor25(Persona p){
         if(getEdad(p) >= 25){
             return false;
-        }
+        };
         return true;
     }
     

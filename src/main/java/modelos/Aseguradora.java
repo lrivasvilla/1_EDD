@@ -11,6 +11,7 @@ public class Aseguradora {
     private Direccion direccion;
     private String telefono;
     private List<Vehiculo> vehiculosAsegurados;
+    private List<Poliza> listaPolizas;
 
     //Constructor
     public Aseguradora(int id, String nombre, Direccion direccion, String telefono, List<Vehiculo> vehiculosAsegurados) {
@@ -19,6 +20,7 @@ public class Aseguradora {
         this.direccion = direccion;
         this.telefono = telefono;
         this.vehiculosAsegurados = vehiculosAsegurados;
+        this.listaPolizas= new ArrayList<>();
     }
 
     //Constructor copia
@@ -70,6 +72,12 @@ public class Aseguradora {
     public void setVehiculosAsegurados(List<Vehiculo> vehiculos) {
         this.vehiculosAsegurados = vehiculos;
     }
+    public List<Poliza> getListaPolizas() {
+        return listaPolizas;
+    }
+    public void setListaPolizas(List<Poliza> listaPolizas) {
+        this.listaPolizas = listaPolizas;
+    }
 
     //OtrosMetodos
     public boolean equals(Aseguradora aseguradora) {
@@ -78,6 +86,21 @@ public class Aseguradora {
 
     public int hashCode(Aseguradora aseguradora){
         return aseguradora.hashCode();
+    }
+
+    //Añadir y borrar polizas
+    public List<Poliza> addPoliza(Poliza poliza){
+        listaPolizas.add(poliza);
+        return listaPolizas;
+    }
+    public List<Poliza> removePoliza(String numeroPoliza){
+        for(Poliza p : listaPolizas){
+            if(p.getNumero().equalsIgnoreCase(numeroPoliza)){
+                listaPolizas.remove(p);
+                return listaPolizas;
+            }
+        }
+        return listaPolizas;
     }
 
     //ToString
