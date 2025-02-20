@@ -20,8 +20,8 @@ public class Vehiculo {
     private Persona duenyoActual;
 
     //Constructor marca/modelo
-    public Vehiculo(int id, String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual) {
-        this.id = id;
+    public Vehiculo(String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual) {
+        this.id = contador;
         SoporteVehiculos sop = SoporteVehiculos.getInstance();
         if (sop.esMarcaValida(marca)) {
             this.marca = sop.getMarcaByName(marca);
@@ -33,7 +33,7 @@ public class Vehiculo {
         }else{
             throw new IllegalArgumentException("El modelo no es válido");
         }
-        if(UtilidadesVehiculo.esMatriculaValida(this.matricula)){
+        if(UtilidadesVehiculo.esMatriculaValida(matricula)){
             this.matricula = matricula;
         }else{
             throw new IllegalArgumentException("La matrícula no es válida");
@@ -45,17 +45,28 @@ public class Vehiculo {
         }
         this.color = color;
         this.duenyoActual = duenyoActual;
+        contador ++;
     }
 
     //Constructor
-    public Vehiculo(int id, Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual) {
-        this.id = id;
+    public Vehiculo(Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual) {
+        this.id = contador;
+        SoporteVehiculos sop = SoporteVehiculos.getInstance();
         this.marca = marca;
         this.modelo = modelo;
-        this.matricula = matricula;
-        this.fechaMatriculacion = fechaMatriculacion;
+        if(UtilidadesVehiculo.esMatriculaValida(matricula)){
+            this.matricula = matricula;
+        }else{
+            throw new IllegalArgumentException("La matrícula no es válida");
+        }
+        if(fechaMatriculacion.isBefore(LocalDate.now())){
+            this.fechaMatriculacion = fechaMatriculacion;
+        }else{
+            throw new IllegalArgumentException("La fecha de matriculación no puede ser posterior al día de hoy");
+        }
         this.color = color;
         this.duenyoActual = duenyoActual;
+        contador ++;
     }
 
     //Constructor copia
@@ -65,6 +76,7 @@ public class Vehiculo {
         this.marca = sop.getMarcaByName(vehiculo.getMarca().getNombre());
         this.modelo = vehiculo.getModelo();
         this.matricula = vehiculo.getMatricula();
+        this.fechaMatriculacion = vehiculo.getFechaMatriculacion();
         this.color = vehiculo.getColor();
         this.duenyoActual = vehiculo.getDuenyoActual();
     }
@@ -120,7 +132,7 @@ public class Vehiculo {
     public Persona getDuenyoActual() {
         return duenyoActual;
     }
-    public void setDuenyoActual(Persona duenyoActual) {
+    public void     setDuenyoActual(Persona duenyoActual) {
         this.duenyoActual = duenyoActual;
     }
 
@@ -135,6 +147,8 @@ public class Vehiculo {
     public int hashCode(Vehiculo vehiculo) {
         return vehiculo.hashCode();
     }
+
+    private static int contador = 1;
 
     //ToString
     public String toString() {

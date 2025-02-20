@@ -22,16 +22,16 @@ public class pruebaV3 {
         Provincia prov1 = new Provincia("Sevilla","41");
 
         //Direccion
-        Direccion dir1 = new Direccion(1,TipoVia.CALLE,"Juan de la Encina",12,"PBJ","41003","Sevilla",prov1);
-        Direccion dir2 = new Direccion(2,TipoVia.CALLE,"Iniesta",23,"1º A","41002","Sevilla",prov1);
+        Direccion dir1 = new Direccion(TipoVia.CALLE,"Juan de la Encina",12,"PBJ","41003","Sevilla",prov1);
+        Direccion dir2 = new Direccion(TipoVia.CALLE,"Iniesta",23,"1º A","41002","Sevilla",prov1);
 
 
         //Persona
-        Persona p1 = new Persona(1,"Luis","Rivas","Villa","20061394N",fec1,dir1, Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
-        Persona p2 = new Persona(2,"Guillermo","Tejado","Sánchez","X1234567L",fec2,dir2, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
+        Persona p1 = new Persona("Luis","Rivas","Villa","20061394N",fec1,dir1, Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
+        Persona p2 = new Persona("Guillermo","Tejado","Sánchez","X1234567L",fec2,dir2, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
 
         //Conductor
-        Conductor c1 = new Conductor(1,"Luis","Rivas","Villa","20061394N",fec1,dir1, Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977",fec5,12,8);
+        Conductor c1 = new Conductor("Luis","Rivas","Villa","20061394N",fec1,dir1, Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977",fec5,12,8);
 
         //Modelo
         Modelo mod1 = new Modelo("Focus",150.0,200.0,300.0);
@@ -48,13 +48,13 @@ public class pruebaV3 {
         Marca marc2 = new Marca("Harley",listaModelos);
 
         //Vehiculo
-        Vehiculo v1 = new Vehiculo(1,marc1,mod1,"2673DGC",fec4,"Azul oscuro",p1);
+        Vehiculo v1 = new Vehiculo(marc1,mod1,"2673DGC",fec4,"Azul oscuro",p1);
 
         //Coche
-        Coche coc1 = new Coche(1,marc1,mod2,"2673DGC",fec4,"Azul oscuro",p1,5,TipoCombustible.DIESEL,Traccion.TRASERA);
+        Coche coc1 = new Coche(marc1,mod2,"2673DGC",fec4,"Azul oscuro",p1,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
 
         //Moto
-        Moto mot1 = new Moto(1,marc2,mod2,"1234ABC",fec4,"Negro",p2,125,false);
+        Moto mot1 = new Moto(marc2,mod2,"1234ABC",fec4,"Negro",p2,125,false);
 
         System.out.println(p1);
         System.out.println(c1);

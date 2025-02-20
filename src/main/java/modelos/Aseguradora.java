@@ -14,13 +14,15 @@ public class Aseguradora {
     private List<Poliza> listaPolizas;
 
     //Constructor
-    public Aseguradora(int id, String nombre, Direccion direccion, String telefono, List<Vehiculo> vehiculosAsegurados) {
-        this.id = id;
+    public Aseguradora(String nombre, Direccion direccion, String telefono, List<Vehiculo> vehiculosAsegurados) {
+        this.id = contador;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.vehiculosAsegurados = vehiculosAsegurados;
         this.listaPolizas= new ArrayList<>();
+
+        contador ++;
     }
 
     //Constructor copia
@@ -87,6 +89,8 @@ public class Aseguradora {
     public int hashCode(Aseguradora aseguradora){
         return aseguradora.hashCode();
     }
+
+    private static int contador = 1;
 
     //Añadir y borrar polizas
     public List<Poliza> addPoliza(Poliza poliza){

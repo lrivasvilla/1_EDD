@@ -3,6 +3,8 @@ package modelos;
 import Utilidades.UtilidadesDireccion;
 import com.aseguradora.utils.SoporteVehiculos;
 
+import java.util.List;
+
 public class Direccion {
     //Atributos
     private int id;
@@ -15,8 +17,8 @@ public class Direccion {
     private Provincia provincia;
 
     //Constructor Provincia
-    public Direccion(int id, TipoVia tipoVia, String nombreVia, int numero, String restoDireccion, String codigoPostal, String localidad, Provincia provincia) {
-        this.id = id;
+    public Direccion(TipoVia tipoVia, String nombreVia, int numero, String restoDireccion, String codigoPostal, String localidad, Provincia provincia) {
+        this.id = contador;
         this.TipoVia = tipoVia;
         this.nombreVia = nombreVia;
         this.numero = numero;
@@ -32,12 +34,12 @@ public class Direccion {
         }else{
             throw new RuntimeException("La provincia no es válida");
         }
-
+        contador++;
     }
 
     //Constructor
-    public Direccion(int id, TipoVia tipoVia, String nombreVia, int numero, String restoDireccion, String codigoPostal, String localidad, String provincia) {
-        this.id = id;
+    public Direccion(TipoVia tipoVia, String nombreVia, int numero, String restoDireccion, String codigoPostal, String localidad, String provincia) {
+        this.id = contador;
         this.TipoVia = tipoVia;
         this.nombreVia = nombreVia;
         this.numero = numero;
@@ -48,11 +50,15 @@ public class Direccion {
             throw new RuntimeException("El codigo de postal no es valido");
         }
         this.localidad = localidad;
-        if(UtilidadesDireccion.esProvinciaValida(this.provincia)){
-            this.provincia = new Provincia(provincia, UtilidadesDireccion.mapaProvincias().get(provincia).getCodigo());
+
+        String cod = codigoPostal.substring(0,2);
+        Provincia pro = new Provincia(provincia,cod);
+        if(UtilidadesDireccion.esProvinciaValida(pro)){
+            this.provincia = pro;
         }else {
             throw new IllegalArgumentException("La provincia no es válida");
         }
+        contador++;
     }
 
     //Constructor copia
@@ -139,10 +145,10 @@ public class Direccion {
         }
         return false;
     }
-
+    private static int contador = 1;
     //ToString
     public String toString() {
         return getId() + ", " + getTipoVia() + ", " + getNombreVia() + ", " + getNumero() + ", " + getRestoDireccion() + ", " +
-                getCodigoPostal()+ ", " + getLocalidad() + ", " + getProvincia()+".";
+                getCodigoPostal()+ ", " + getLocalidad() + ", " + getProvincia().getNombre()+".";
     }
 }

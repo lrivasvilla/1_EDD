@@ -21,8 +21,8 @@ public class Persona {
     private String telefono;
 
     //Constructor1
-    public Persona(int id, String nombre, String apellido1, String apellido2, String nif, LocalDate fechaNacimiento, Direccion direccion, Sexo sexo, String paisOrigen, String email, String telefono) {
-        this.id = id;
+    public Persona(String nombre, String apellido1, String apellido2, String nif, LocalDate fechaNacimiento, Direccion direccion, Sexo sexo, String paisOrigen, String email, String telefono) {
+        this.id= contador;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -37,6 +37,7 @@ public class Persona {
         this.paisOrigen = paisOrigen;
         this.email = email;
         this.telefono = telefono;
+        contador ++;
     }
 
     //Constructor copia
@@ -149,6 +150,8 @@ public class Persona {
     public int hashCode(Persona persona) {
         return persona.hashCode();
     }
+
+    private static int contador = 1;
 
     //ToString
     public String toString() {

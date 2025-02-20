@@ -16,19 +16,21 @@ public class Coche extends Vehiculo {
     private boolean esTodoTerreno;
 
     //Constructor Modelo y Marca
-    public Coche(int id, Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int numeroPuerta, TipoCombustible tipoCombustible, Traccion traccion) {
-        super(id, marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
+    public Coche(Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int numeroPuerta, TipoCombustible tipoCombustible, Traccion traccion, boolean esTodoTerreno) {
+        super(marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
         this.numeroPuerta = numeroPuerta;
         this.tipoCombustible = tipoCombustible;
         this.traccion = traccion;
+        this.esTodoTerreno = esTodoTerreno;
     }
 
     //Constructor
-    public Coche(int id, String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int numeroPuerta, TipoCombustible tipoCombustible, Traccion traccion) {
-        super(id, marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
+    public Coche(String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int numeroPuerta, TipoCombustible tipoCombustible, Traccion traccion, boolean esTodoTerreno) {
+        super(marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
         this.numeroPuerta = numeroPuerta;
         this.tipoCombustible = tipoCombustible;
         this.traccion = traccion;
+        this.esTodoTerreno = esTodoTerreno;
     }
 
     //Constructor copia
@@ -37,6 +39,7 @@ public class Coche extends Vehiculo {
         this.numeroPuerta = coche.numeroPuerta;
         this.tipoCombustible = coche.tipoCombustible;
         this.traccion = coche.traccion;
+        this.esTodoTerreno = coche.esTodoTerreno;
     }
 
     //Constructor vacio
@@ -45,6 +48,7 @@ public class Coche extends Vehiculo {
         this.numeroPuerta = 0;
         this.tipoCombustible = null;
         this.esTodoTerreno = false;
+
     }
 
     //Getter y setter
@@ -66,6 +70,12 @@ public class Coche extends Vehiculo {
     public void setTraccion(Traccion traccion) {
         this.traccion = traccion;
     }
+    public boolean isEsTodoTerreno(){
+        return esTodoTerreno;
+    }
+    public void setEsTodoTerreno(boolean esTodoTerreno){
+        this.esTodoTerreno = esTodoTerreno;
+    }
 
     // equals y hasCode
     public boolean equals(Coche coche){
@@ -82,6 +92,6 @@ public class Coche extends Vehiculo {
     //ToString
     public String toString() {
         return super.toString() + "\n\n Número de puertas: " + getNumeroPuerta() + "\n Tipo de combustible: " +
-                getTipoCombustible() + "\n Tracción: " + getTraccion()+"\n";
+                getTipoCombustible() + "\n Tracción: " + getTraccion()+ "\n T¿Es todoterreno?: "+isEsTodoTerreno() + "\n";
     }
 }

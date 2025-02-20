@@ -26,18 +26,25 @@ public class UtilidadesAseguradora {
         return polizasActivas;
     }
     public List<Poliza> recuperaPolizasPorTomador(Aseguradora aseguradora,String nif){
-        List<Poliza> polizasDni = new ArrayList<>();
+        List<Poliza> polizasDniTomador = new ArrayList<>();
 
         for(Poliza poli : aseguradora.getListaPolizas()){
             if(poli.getTomador().getNif().equalsIgnoreCase(nif)){
-                polizasDni.add(poli);
+                polizasDniTomador.add(poli);
             }
         }
         return null;
     }
 
     public List<Poliza> recuperaPolizasPorConductor(Aseguradora aseguradora,String nif){
+        List<Poliza> polizasDniConductor = new ArrayList<>();
 
+        for(Poliza poli : aseguradora.getListaPolizas()){
+            if(poli.getConductorPrincipal().getNif().equals(nif)){
+                polizasDniConductor.add(poli);
+            }
+        }
+        return polizasDniConductor;
     }
 
 

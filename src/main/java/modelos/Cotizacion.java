@@ -25,8 +25,8 @@ public class Cotizacion {
     private modalidadElegida modalidadElegida;
 
     //Constructor
-    public Cotizacion(int id, int codigo,LocalDate fechaCotizacion, LocalDate fechaInicio, Vehiculo vehiculo, Persona tomador, Conductor conductorPrincipal, List<Conductor> conductoresOcasionales, boolean tieneAparcamientoPrivado, int numSin5, modalidadElegida modalidadElegida) {
-        this.id = id;
+    public Cotizacion(int codigo,LocalDate fechaCotizacion, LocalDate fechaInicio, Vehiculo vehiculo, Persona tomador, Conductor conductorPrincipal, List<Conductor> conductoresOcasionales, boolean tieneAparcamientoPrivado, int numSin5, modalidadElegida modalidadElegida) {
+        this.id = contador;
         this.codigo = codigo;
         this.fechaCotizacion = fechaCotizacion;
         this.fechaInicio = fechaInicio;
@@ -45,6 +45,7 @@ public class Cotizacion {
         this.precioTAMP = aux.calcTarifa(this).getPrecioTAMP();
         this.precioTRIE = aux.calcTarifa(this).getPrecioTRIE();
         this.modalidadElegida = modalidadElegida;
+        contador ++;
     }
 
     //Constructor copia
@@ -183,6 +184,8 @@ public class Cotizacion {
         }
         return false;
     }
+
+    private static int contador = 1;
 
     //ToString
     public String toString() {

@@ -1,14 +1,12 @@
 import com.aseguradora.utils.Marca;
 import com.aseguradora.utils.Modelo;
-import com.aseguradora.utils.SoporteVehiculos;
 import modelos.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class pruebaV4 {
+public class pruebaV5 {
     public static void main(String[] args) {
         //Fecha nacimiento
         LocalDate fec1 = LocalDate.of(1995,8,14);
@@ -122,15 +120,15 @@ public class pruebaV4 {
 
         //Vehiculo
         Vehiculo v1 = new Vehiculo(marc1,mod1,"2673DGC",fec4,"Azul oscuro",p1);
-        Vehiculo v2 = new Vehiculo(marc2, mod2, "2673DGC", fec1, "Rojo", p2);
-        Vehiculo v3 = new Vehiculo(marc3, mod3, "2673DGC", fec2, "Blanco", p3);
-        Vehiculo v4 = new Vehiculo(marc4, mod4, "2673DGC", fec3, "Negro", p4);
-        Vehiculo v5 = new Vehiculo(marc5, mod5, "2673DGC", fec5, "Gris", p5);
-        Vehiculo v6 = new Vehiculo(marc6, mod6, "2673DGC", fec6, "Verde", p6);
-        Vehiculo v7 = new Vehiculo(marc7, mod7, "2673DGC", fec7, "Azul", p7);
-        Vehiculo v8 = new Vehiculo(marc8, mod8, "2673DGC", fec8, "Amarillo", p8);
-        Vehiculo v9 = new Vehiculo(marc9, mod9, "2673DGC", fec9, "Plateado", p9);
-        Vehiculo v10 = new Vehiculo(marc10, mod10, "2673DGC", fec9, "Burdeos", p10);
+        Vehiculo v2 = new Vehiculo(marc2, mod2, "1234ABC", fec1, "Rojo", p2);
+        Vehiculo v3 = new Vehiculo(marc3, mod3, "5678XYZ", fec2, "Blanco", p3);
+        Vehiculo v4 = new Vehiculo(marc4, mod4, "9101LMN", fec3, "Negro", p4);
+        Vehiculo v5 = new Vehiculo(marc5, mod5, "3456PQR", fec5, "Gris", p5);
+        Vehiculo v6 = new Vehiculo(marc6, mod6, "7890TUV", fec6, "Verde", p6);
+        Vehiculo v7 = new Vehiculo(marc7, mod7, "1122JKL", fec7, "Azul", p7);
+        Vehiculo v8 = new Vehiculo(marc8, mod8, "3344MNO", fec8, "Amarillo", p8);
+        Vehiculo v9 = new Vehiculo(marc9, mod9, "5566QRS", fec9, "Plateado", p9);
+        Vehiculo v10 = new Vehiculo(marc10, mod10, "7788UVW", fec9, "Burdeos", p10);
 
         //Lista de vehículos
         List<Vehiculo> listaVehiculos = new ArrayList<>();
@@ -150,8 +148,7 @@ public class pruebaV4 {
         Coche coc1 = new Coche(marc1,mod2,"2673DGC",fec4,"Azul oscuro",p1,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
 
         //Moto
-        Moto mot1 = new Moto(marc2,mod2,"2673DGC",fec4,"Negro",p2,125,false);
-        Moto mot2 = new Moto("Honda","Rebel 500","2673DGC",fec4,"Negro",p1,49,false);
+        Moto mot1 = new Moto(marc2,mod2,"1234ABC",fec4,"Negro",p2,125,false);
 
 
         //Aseguradora
@@ -162,11 +159,17 @@ public class pruebaV4 {
         ocasionales.add(c2);
         ocasionales.add(c3);
 
-        Cotizacion cotizacion1 = new Cotizacion(1,fec6,fec6,coc1,p1,c1,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTAMP);
+        Cotizacion cotizacion1 = new Cotizacion(1,fec6,fec6,v1,p1,c1,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTAMP);
 
         AnualidadPoliza anu1 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
         AnualidadPoliza anu2 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
         AnualidadPoliza anu3 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,fec7,null);
+        AnualidadPoliza anu4 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
+        AnualidadPoliza anu5 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
+        AnualidadPoliza anu6 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,fec7,null);
+        AnualidadPoliza anu7 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
+        AnualidadPoliza anu8 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
+        AnualidadPoliza anu9 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,fec7,null);
 
         List<AnualidadPoliza> listaAnualidadPolizas = new ArrayList<>();
         listaAnualidadPolizas.add(anu1);
@@ -181,8 +184,5 @@ public class pruebaV4 {
         System.out.println(anu3);
         System.out.println("/////////////////////////////////////////////////////");
         System.out.println(poliza1);
-
     }
-
-
 }

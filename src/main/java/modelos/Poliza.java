@@ -23,8 +23,8 @@ public class Poliza {
     private LocalDate fechaAnulacion;
 
     //Constructor
-    public Poliza (int id, List<AnualidadPoliza> anualidades) {
-        this.id = id;
+    public Poliza (List<AnualidadPoliza> anualidades) {
+        this.id = contador;
         this.anualidades = anualidades;
         this.numero = anualidades.getLast().getNumero();
         this.estadoPoliza = anualidades.getLast().getEstadoPoliza();
@@ -38,6 +38,8 @@ public class Poliza {
         this.fechaInicioAnualidad = anualidades.getLast().getFechaInicioAnualidad();
         this.fechaFinAnualidad = anualidades.getLast().getFechaFinAnualidad();
         this.fechaAnulacion = anualidades.getLast().getFechaAnulacion();
+
+        contador ++;
     }
 
     //Constructor copia
@@ -169,7 +171,9 @@ public class Poliza {
     public boolean equals (Poliza poliza) {
         return this.id == poliza.id && this.numero.equals(poliza.numero) && this.tomador.equals(poliza.tomador);
     }
-    
+
+    private static int contador = 1;
+
     //ToString
     public String toString(){
         List<String> listAux = new ArrayList<>();

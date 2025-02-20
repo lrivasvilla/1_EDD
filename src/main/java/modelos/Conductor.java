@@ -14,8 +14,8 @@ public class Conductor extends Persona {
     private int anyosAsegurado;
 
     //Constructor 1
-    public Conductor(int id, String nombre, String apellido1, String apellido2, String nif, LocalDate fechaNacimiento, Direccion direccion, Sexo sexo, String paisOrigen, String email, String telefono, LocalDate fechaCarnet, int puntosCarnet, int anyosAsegurado) {
-        super(id, nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, paisOrigen, email, telefono);
+    public Conductor(String nombre, String apellido1, String apellido2, String nif, LocalDate fechaNacimiento, Direccion direccion, Sexo sexo, String paisOrigen, String email, String telefono, LocalDate fechaCarnet, int puntosCarnet, int anyosAsegurado) {
+        super(nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, paisOrigen, email, telefono);
         this.fechaCarnet = fechaCarnet;
         this.puntosCarnet = puntosCarnet;
         this.anyosAsegurado = anyosAsegurado;

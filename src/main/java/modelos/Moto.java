@@ -11,15 +11,15 @@ public class Moto extends Vehiculo {
     private boolean tieneSidecar;
 
     //Constructor Modelo y Marca
-    public Moto(int id, Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int cilindradaCC, boolean tieneSidecar) {
-        super(id, marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
+    public Moto(Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int cilindradaCC, boolean tieneSidecar) {
+        super(marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
         this.cilindradaCC = cilindradaCC;
         this.tieneSidecar = tieneSidecar;
     }
 
     //Constructor
-    public Moto(int id, String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int cilindradaCC, boolean tieneSidecar) {
-        super(id, marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
+    public Moto(String marca, String modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual, int cilindradaCC, boolean tieneSidecar) {
+        super(marca, modelo, matricula, fechaMatriculacion, color, duenyoActual);
         this.cilindradaCC = cilindradaCC;
         this.tieneSidecar = tieneSidecar;
     }
