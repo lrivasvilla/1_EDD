@@ -1,12 +1,10 @@
-import Utilidades.UtilidadesPersona;
-import Utilidades.UtilidadesVehiculo;
 import modelos.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class pruebaV1 {
+public class PruebaV1 {
     public static void main(String[] args) {
 
         //Fecha

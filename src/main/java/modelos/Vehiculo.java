@@ -132,7 +132,7 @@ public class Vehiculo {
     public Persona getDuenyoActual() {
         return duenyoActual;
     }
-    public void     setDuenyoActual(Persona duenyoActual) {
+    public void setDuenyoActual(Persona duenyoActual) {
         this.duenyoActual = duenyoActual;
     }
 

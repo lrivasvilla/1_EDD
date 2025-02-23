@@ -11,6 +11,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,25 +19,32 @@ public class PruebaContratacion {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Bienvenido a Aseguradora Aseg. Vamos a solicitarle sus datos para generar una póliza de su vehículo.\n");
+        System.out.println("\nBienvenido a Aseguradora ASEG. Vamos a solicitarle sus datos para generar una póliza de su vehículo.\n" +
+                            "En caso no indicar un tomador, será el conductor principal.\n");
         Persona personaGeneral = null;
+        Persona tomadorGeneral = null;
         Conductor conductorGeneral = null;
         List<Conductor> conductoresOcasionales = new ArrayList<Conductor>();
 
         int opcionConductor = 0;
 
         while (true) {
-            System.out.println("\n*** ¿Qué datos va a introducir? ***\n\n\t👤Conductor principal(1)\n\t\uD83D\uDC65Conductor ocasional(2)\n\t✅Datos del vehículo(3)");
+            System.out.println("\n\uD83D\uDEE1️\uD83D\uDEE1️\uD83D\uDEE1️ ¿Qué datos va a introducir? \uD83D\uDEE1️\uD83D\uDEE1️\uD83D\uDEE1️" +
+                                "\n\n\t👤 Datos del tomador (1)" +
+                                "\n\t👤 Conductor principal (2)" +
+                                "\n\t\uD83D\uDC65 Conductor ocasional (3)" +
+                                "\n\t🚗 Datos del vehículo (4)\n");
+
             try {
                 opcionConductor = Integer.parseInt(sc.next().trim());
 
-                if (opcionConductor < 1 || opcionConductor > 3) {
+                if (opcionConductor < 1 || opcionConductor > 4) {
                     System.out.println("⚠️ Opción inválida. Por favor, ingrese 1, 2 o 3 ⚠️");
                     continue;
                 }
 
 
-                if (opcionConductor == 3) {
+                if (opcionConductor == 4) {
                     if (conductorGeneral == null) {
                         System.out.println("⚠️ Primero debe rellenar el formulario del conductor principal ⚠️");
                         continue;
@@ -44,6 +52,7 @@ public class PruebaContratacion {
                         break;
                     }
                 }
+
 
 
                 System.out.println("\n**** \uD83C\uDFE0  DIRECCIÓN \uD83C\uDFE0 *****\n");
@@ -306,14 +315,20 @@ public class PruebaContratacion {
                     }
                 }
 
-                // Conductor principal
+                // Tomador
                 if (opcionConductor == 1) {
+                    tomadorGeneral = new Persona(nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, pais, email, telefono);
+
+                }
+
+                // Conductor principal
+                if (opcionConductor == 2) {
                     personaGeneral = new Persona(nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, pais, email, telefono);
                     conductorGeneral = new Conductor(nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, pais, email, telefono, fechaCarnet, puntosCarnet, anyosAsegurado);
                 }
 
                 //Conductores ocasionales
-                if (opcionConductor == 2) {
+                if (opcionConductor == 3) {
                     Conductor conductorOcasional = new Conductor(nombre, apellido1, apellido2, nif, fechaNacimiento, direccion, sexo, pais, email, telefono, fechaCarnet, puntosCarnet, anyosAsegurado);
                     conductoresOcasionales.add(conductorOcasional);
                 }
@@ -369,7 +384,6 @@ public class PruebaContratacion {
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("⚠️ La marca no es válida, introduce una válida ⚠️");
-                    sc.nextLine();
                 }
             }
 
@@ -391,7 +405,6 @@ public class PruebaContratacion {
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("⚠️ El modelo no existe ⚠️");
-                    sc.nextLine();
                 }
             }
 
@@ -406,7 +419,7 @@ public class PruebaContratacion {
                     matricula = matriculaString;
                 } else {
                     System.out.println("⚠️ La matrícula no es válida ⚠️");
-                    sc.nextLine();
+
                 }
             }
 
@@ -436,11 +449,9 @@ public class PruebaContratacion {
 
                     if (color.isEmpty()) {
                         System.out.println("⚠️ El campo no puede estar vacío ⚠️");
-                        sc.nextLine();
                     }
                 } catch (Exception e) {
                     System.out.println("⚠️ El campo no puede estar vacío ⚠️");
-                    sc.nextLine();
                 }
 
             }
@@ -464,8 +475,9 @@ public class PruebaContratacion {
                             System.out.println("⚠️ El número de puertas debe estar entre 2 y 5 ⚠️");
                             numeroPuertas = 0;
                         }
-                    } catch (NumberFormatException e) {
+                    } catch (InputMismatchException e) {
                         System.out.println("⚠️ El número de puertas no es válido ⚠️");
+                        sc.nextLine();
                     }
                 }
                 sc.nextLine();
@@ -525,8 +537,9 @@ public class PruebaContratacion {
                             System.out.println("⚠️ Las cilindradas (cc) no son correctas ⚠️");
                             cilindradaCC = 0;
                         }
-                    } catch (NumberFormatException e) {
+                    } catch (InputMismatchException e) {
                         System.out.println("⚠️ El número de cilindradas no es correcto ⚠️");
+                        sc.nextLine();
                     }
                 }
                 sc.nextLine();
@@ -604,70 +617,79 @@ public class PruebaContratacion {
                         System.out.println("❌ No puedes ser asegurado ❌");
                         numSin5 = 10;
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("❌ No puedes ser asegurado ❌");
+                } catch (InputMismatchException e) {
+                    System.out.println("⚠️ La respuesta debe ser válida ⚠️");
+                    sc.nextLine();
                 }
             }
+            sc.nextLine();
 
             Cotizacion cotizacion = new Cotizacion();
 
+
             if (respuestaVehiculo == 1){
-                cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, cocheGeneral, personaGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                if (tomadorGeneral == null) {
+                    cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, cocheGeneral, personaGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                }else{
+                    cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, cocheGeneral, tomadorGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                }
             }
             if (respuestaVehiculo == 2){
-                cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, motoGeneral, personaGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                if (tomadorGeneral == null) {
+                    cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, motoGeneral, personaGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                }else{
+                    cotizacion = new Cotizacion(fechaCotizacion, fechaInicio, motoGeneral, tomadorGeneral, conductorGeneral, conductoresOcasionales, tieneAparcamiento, numSin5, null);
+                }
             }
 
 
-            System.out.println("\n" + "\uD83D\uDCDD Cotización:\n\n" + "\tTerceros: " + cotizacion.getPrecioTERC() + "€ - " + "Terceros ampliados: " + cotizacion.getPrecioTAMP() + "€ - " + "Todo riesgo: " + cotizacion.getPrecioTRIE() + "€");
+            System.out.println("\n" + "\uD83D\uDCDD Cotización: \uD83D\uDCDD\n\n" + "\tTerceros: " + cotizacion.getPrecioTERC() + "€ - " + "Terceros ampliados: " + cotizacion.getPrecioTAMP() + "€ - " + "Todo riesgo: " + cotizacion.getPrecioTRIE() + "€");
 
 
             int modalidadElegida = 0;
             while (modalidadElegida == 0) {
-                System.out.println("\n\uD83D\uDCC4 ¿Qué modalidad prefiere? Terceros(3), Terceros ampliados(2), Todo riesgo(1), Salir de programa(4): ");
+                System.out.println( "\n📄 ¿Qué modalidad prefiere? " +
+                                    "\n\t✅ Todo riesgo (1)" +
+                                    "\n\t✅ Terceros ampliados (2)" +
+                                    "\n\t✅ Terceros (3)" +
+                                    "\n\t❌ Salir del programa (4): ");
+
                 try {
                     modalidadElegida = sc.nextInt();
 
                     if (modalidadElegida == 1) {
                         cotizacion.setModalidadElegida(Cotizacion.modalidadElegida.PrecioTRIE);
-
                     } else if (modalidadElegida == 2) {
                         cotizacion.setModalidadElegida(Cotizacion.modalidadElegida.PrecioTAMP);
-
                     } else if (modalidadElegida == 3) {
                         cotizacion.setModalidadElegida(Cotizacion.modalidadElegida.PrecioTERC);
-
                     } else if (modalidadElegida == 4) {
                         System.out.println("Gracias por contactar con Aseguradora Aseg...");
                         System.exit(0);
-
                     } else {
                         System.out.println("⚠️ La respuesta debe ser 1, 2, 3 ó 4 ⚠️");
                         modalidadElegida = 0;
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("⚠️ La respuesta debe ser 1, 2, 3 ó 4 ⚠️");
+                } catch (InputMismatchException e) {
+                    System.out.println("⚠️ Entrada inválida. Ingrese un número del 1 al 4 ⚠️");
+                    sc.nextLine();
                 }
-
             }
-            sc.nextLine();
+
 
             AnualidadPoliza.ModoPago modoPago = null;
             while (modoPago == null) {
-                System.out.println("\n📄 ¿Qué modo de pago prefiere? IBAN(1) o Tarjeta(2): ");
+                System.out.println("\n📄 ¿Qué modo de pago prefiere? \uD83D\uDCC7IBAN (1) o \uD83D\uDCB3Tarjeta (2): ");
                 try {
-                    int opcion = sc.nextInt();
+                    String opcion = sc.next().trim().toUpperCase();
                     sc.nextLine();
 
-                    switch (opcion) {
-                        case 1:
-                            modoPago = AnualidadPoliza.ModoPago.IBAN;
-                            break;
-                        case 2:
-                            modoPago = AnualidadPoliza.ModoPago.Tarjeta;
-                            break;
-                        default:
-                            System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
+                    if (opcion.equals("1")) {
+                        modoPago = AnualidadPoliza.ModoPago.IBAN;
+                    } else if (opcion.equals("2")) {
+                        modoPago = AnualidadPoliza.ModoPago.Tarjeta;
+                    } else {
+                        System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
                     }
                 } catch (Exception e) {
                     System.out.println("⚠️ Entrada inválida. Ingrese 1 ó 2 ⚠️");
@@ -676,28 +698,28 @@ public class PruebaContratacion {
             }
 
 
-            int pagoFraccionado = 0;
             boolean isPagoFraccionado = false;
-            while (pagoFraccionado == 0) {
-                System.out.println("\n\uD83D\uDCC4 ¿Qué modo de pago prefiere? Fraccionado(1) o Sin Fraccionar(2): ");
+            boolean opcionValida = false;
+            while (!opcionValida) {
+                System.out.println("\n\uD83D\uDCB0 ¿Desea pago fraccionado? (S/N): ");
                 try {
-                    pagoFraccionado = sc.nextInt();
+                    String respuesta = sc.next().trim().toUpperCase();
+                    sc.nextLine(); // Limpiar buffer
 
-                    if (pagoFraccionado == 1) {
+                    if (respuesta.equals("S")) {
                         isPagoFraccionado = true;
-
-                    } else if (pagoFraccionado == 2) {
+                        opcionValida = true;
+                    } else if (respuesta.equals("N")) {
                         isPagoFraccionado = false;
-
-                    } else{
-                        System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
-                        pagoFraccionado = 0;
+                        opcionValida = true;
+                    } else {
+                        System.out.println("⚠️ La respuesta debe ser S/N ⚠️");
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
+                } catch (Exception e) {
+                    System.out.println("⚠️ Entrada inválida. Ingrese S/N ⚠️");
+                    sc.nextLine();
                 }
             }
-            sc.nextLine();
 
             System.out.println("**** \uD83D\uDCDC DATOS DE LA POLIZA \uD83D\uDCDC *****\n");
 
@@ -708,6 +730,7 @@ public class PruebaContratacion {
             listAnualidadPoliza.add(anualidadPoliza);
             Poliza poliza = new Poliza(listAnualidadPoliza);
             System.out.println(poliza);
+            System.out.println("\n✅ Póliza registrada con éxito ✅\n");
 
 
         }

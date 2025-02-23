@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class pruebaV2 {
+public class PruebaV2 {
     public static void main(String[] args) {
 
         //Fecha

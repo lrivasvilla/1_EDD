@@ -1,19 +1,14 @@
-import Utilidades.UtilidadesDireccion;
-import Utilidades.UtilidadesPersona;
-import Utilidades.UtilidadesVehiculo;
+import Utilidades.UtilidadesAseguradora;
 import com.aseguradora.utils.Marca;
 import com.aseguradora.utils.Modelo;
-import com.aseguradora.utils.SoporteVehiculos;
 import modelos.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class pruebaV3 {
+public class PruebaV5 {
     public static void main(String[] args) {
-
         //Fecha nacimiento
         LocalDate fec1 = LocalDate.of(1995,8,14);
         LocalDate fec2 = LocalDate.of(1996,6,12);
@@ -155,121 +150,58 @@ public class pruebaV3 {
 
         //Moto
         Moto mot1 = new Moto(marc2,mod2,"2673DGC",fec4,"Negro",p2,125,false);
-        Moto mot2 = new Moto("Kawasaki","Z900","2673DGC",fec4,"Negro",p1,49,false);
 
 
-//        System.out.println(SoporteVehiculos.getInstance().listaModelos("Ford"));
-//        System.out.println(SoporteVehiculos.getInstance().getMarcas());
-//
-//        System.out.println(SoporteVehiculos.getInstance().listaMarcasMotos());
-//        System.out.println(SoporteVehiculos.getInstance().listaMarcasCoches());
-//
-//
-//        System.out.println(SoporteVehiculos.getInstance().esMarcaValida("Ford"));
-//
-//        System.out.println(SoporteVehiculos.getInstance().getMarcasCochesList());
-//        System.out.println(SoporteVehiculos.getInstance().getMarcasMotosList());
+        //Conductores ocasionales
+        List<Conductor> ocasionales = new ArrayList<>();
+        ocasionales.add(c2);
+        ocasionales.add(c3);
+
+        Cotizacion cotizacion1 = new Cotizacion(fec6,fec6,v1,p1,c1,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTAMP);
+
+        AnualidadPoliza anu1 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu2 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu3 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,null);
+        AnualidadPoliza anu4 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu5 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu6 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,null);
+        AnualidadPoliza anu7 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu8 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,null);
+        AnualidadPoliza anu9 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,null);
+
+        List<AnualidadPoliza> listaAnualidadPolizas = new ArrayList<>();
+        listaAnualidadPolizas.add(anu1);
+        listaAnualidadPolizas.add(anu2);
+        listaAnualidadPolizas.add(anu3);
 
 
-        System.out.println("/////////////////////////////////////////////////////");
-        System.out.println("\n✅✅✅ VALIDACIÓNES ✅✅✅️");
+        Poliza poliza1 = new Poliza(listaAnualidadPolizas);
 
-        System.out.println("\n✅Validar NIF");
-        try{
-            Persona personax = new Persona("Guillermo","Tejado","Sánchez","70406j",fec1,dir1, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
-            if(UtilidadesPersona.esNIFValido(personax)){
-                System.out.println("DNI/NIE válido");
-            }
-        } catch (IllegalArgumentException e){
-            System.out.println("DNI/NIE NO válido");
-        }
+        List<Poliza> listaPolizas = new ArrayList<>();
+        listaPolizas.add(poliza1);
 
-        System.out.println("\n✅Validar persona mayor de edad");
+        System.out.println("\n\uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD COTIZACIÓN \uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD\n");
+        System.out.println(cotizacion1);
+        System.out.println("\n\uD83D\uDCC6\uD83D\uDCC6\uD83D\uDCC6 ANUALIDAD \uD83D\uDCC6\uD83D\uDCC6\uD83D\uDCC6\n");
+        System.out.println(anu3);
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC PÓLIZA \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println(poliza1);
 
-        Persona personaMenor = new Persona("Guillermo","Tejado","Sánchez","89043584G",LocalDate.of(2020,12,2),dir1, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
-        if(UtilidadesPersona.esMayorEdad(personaMenor)){
-            System.out.println("La persona es mayor de edad");
-        }else {
-            System.out.println("La persona es menor de edad");
-        }
+        UtilidadesAseguradora util = new UtilidadesAseguradora();
+        //Aseguradora
+        Aseguradora asg = new Aseguradora("ASG",dir3,"658541214",listaVehiculos);
+        asg.addPoliza(poliza1);
 
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDCRecuperar póliza por número \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println(util.recuperaPoliza(asg,poliza1.getNumero()));
 
-        System.out.println("\n✅Validar persoma mayor de 25");
+        System.out.println("\nRecuperar póliza activas \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println(util.recuperaPolizasActivas(asg));
 
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Recuperar póliza por NIF del tomador \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println(util.recuperaPolizasPorTomador(asg,poliza1.getTomador().getNif()));
 
-        if(UtilidadesPersona.esMenor25(personaMenor)){
-            System.out.println("La persona es mayor de 25");
-        }else{
-            System.out.println("La persona es menor de 25");}
-
-
-
-        System.out.println("\n\uD83D\uDDFA️\uD83D\uDDFA️\uD83D\uDDFA️ PROVINCIA Y CP \uD83D\uDDFA️\uD83D\uDDFA️\uD83D\uDDFA️ ");
-        System.out.println(prov1);
-
-        System.out.println("\n\uD83D\uDDFA️Validar provincia: ");
-        try{
-            Provincia provErronea = new Provincia("Sevilla","43");
-
-            if(UtilidadesDireccion.esProvinciaValida(provErronea)){
-                System.out.println("La provincia es válida");
-            }else{
-                System.out.println("La provincia NO es válida");
-            }
-
-        } catch (Exception e){
-            System.out.println("La provincia NO es válida");
-        }
-
-        System.out.println("\n\uD83D\uDDFA️Validar CP: ");
-        if(UtilidadesDireccion.esCPValido("60001")){
-            System.out.println("El código postal es válido");
-        }else{
-            System.out.println("El código postal NO es válido");
-        }
-
-        SoporteVehiculos sop = SoporteVehiculos.getInstance();
-
-        System.out.println("\n🚗alidar Marca (String): ");
-        if(sop.esMarcaValida("jamón")){
-            System.out.println("La marca es válida");
-        }else{
-            System.out.println("la marca NO es válida");
-        }
-
-        System.out.println("\n🚗️Validar Modelo (String): ");
-        if(sop.esModeloValido("jamón","smith")){
-            System.out.println("El modelo es válida");
-        }else{
-            System.out.println("El modelo NO es válida");
-        }
-
-        System.out.println("\n🚗Validar año de matriculación: ");
-        if(UtilidadesVehiculo.validaFechaMatriculacion(LocalDate.of(2026,12,2))){
-            System.out.println("El año de matriculación es válido");
-        }else{
-            System.out.println("El año de matriculación NO es válido");
-        }
-
-        System.out.println("\n🚗Validar matricula: ");
-        if(UtilidadesVehiculo.esMatriculaValida("dsad3")){
-            System.out.println("La matrícula es válida");
-        }else{
-            System.out.println("La matrícula NO es válida");
-        }
-
-        System.out.println("\n\uD83D\uDE97\uD83D\uDE97\uD83D\uDE97 COCHE \uD83D\uDE97\uD83D\uDE97\uD83D\uDE97");
-        System.out.println(coc1);
-        System.out.println("\n\uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD TARIFACIÓN \uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD\n");
-        System.out.println(SoporteVehiculos.getInstance().calcularTarifa(coc1.getMarca().getNombre(),coc1.getModelo().getNombre(),coc1.getFechaMatriculacion().getYear()));
-
-        System.out.println("\n\uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5 MOTO \uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5");
-        System.out.println(mot2);
-        System.out.println("\n\uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD TARIFACIÓN \uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD\n");
-        System.out.println(SoporteVehiculos.getInstance().calcularTarifa(mot2.getMarca().getNombre(),mot2.getModelo().getNombre(),mot2.getFechaMatriculacion().getYear()));
-
-
-
-
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Recuperar póliza por NIF del conductor principal \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println(util.recuperaPolizasPorConductor(asg,poliza1.getConductorPrincipal().getNif()));
     }
 }
