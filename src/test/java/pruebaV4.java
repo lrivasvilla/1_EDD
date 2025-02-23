@@ -1,3 +1,4 @@
+import Utilidades.UtilidadesCotizacion;
 import com.aseguradora.utils.Marca;
 import com.aseguradora.utils.Modelo;
 import com.aseguradora.utils.SoporteVehiculos;
@@ -7,9 +8,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class pruebaV4 {
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
         //Fecha nacimiento
         LocalDate fec1 = LocalDate.of(1995,8,14);
         LocalDate fec2 = LocalDate.of(1996,6,12);
@@ -150,8 +154,8 @@ public class pruebaV4 {
         Coche coc1 = new Coche(marc1,mod2,"2673DGC",fec4,"Azul oscuro",p1,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
 
         //Moto
-        Moto mot1 = new Moto(marc2,mod2,"2673DGC",fec4,"Negro",p2,125,false);
-        Moto mot2 = new Moto("Honda","Rebel 500","2673DGC",fec4,"Negro",p1,49,false);
+        Moto mot1 = new Moto("Kawasaki","Z650","2673DGC",fec4,"Negro",p2,125,false);
+        Moto mot2 = new Moto("Kawasaki","Z900","2673DGC",fec4,"Negro",p1,49,false);
 
 
         //Aseguradora
@@ -162,11 +166,13 @@ public class pruebaV4 {
         ocasionales.add(c2);
         ocasionales.add(c3);
 
-        Cotizacion cotizacion1 = new Cotizacion(1,fec6,fec6,coc1,p1,c1,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTAMP);
+        Cotizacion cotizacion1 = new Cotizacion(fec6,fec6,coc1,p1,c1,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTAMP);
+        Cotizacion cotizacion2 = new Cotizacion(fec6,fec6,mot1,p2,c3,ocasionales,true,4, Cotizacion.modalidadElegida.PrecioTRIE);
+        Cotizacion cotizacion3 = new Cotizacion(fec6,fec6,mot2,p3,c3,ocasionales,false,4, Cotizacion.modalidadElegida.PrecioTERC);
 
-        AnualidadPoliza anu1 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
-        AnualidadPoliza anu2 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,false,fec6,fec7,null);
-        AnualidadPoliza anu3 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,fec7,null);
+        AnualidadPoliza anu1 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion1, AnualidadPoliza.ModoPago.Tarjeta,true,fec6,null);
+        AnualidadPoliza anu2 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion2, AnualidadPoliza.ModoPago.IBAN,false,fec2,null);
+        AnualidadPoliza anu3 = new AnualidadPoliza(AnualidadPoliza.EstadoPoliza.Vigente,null,cotizacion3, AnualidadPoliza.ModoPago.Tarjeta,true,fec5,null);
 
         List<AnualidadPoliza> listaAnualidadPolizas = new ArrayList<>();
         listaAnualidadPolizas.add(anu1);
@@ -175,12 +181,25 @@ public class pruebaV4 {
 
         Poliza poliza1 = new Poliza(listaAnualidadPolizas);
 
-
+        System.out.println("\n\uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD COTIZACIÓN \uD83D\uDCDD\uD83D\uDCDD\uD83D\uDCDD\n");
         System.out.println(cotizacion1);
-        System.out.println("/////////////////////////////////////////////////////");
+        System.out.println("\n\uD83D\uDCC6\uD83D\uDCC6\uD83D\uDCC6 ANUALIDAD \uD83D\uDCC6\uD83D\uDCC6\uD83D\uDCC6\n");
         System.out.println(anu3);
-        System.out.println("/////////////////////////////////////////////////////");
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC PÓLIZA \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         System.out.println(poliza1);
+
+        UtilidadesCotizacion util = new UtilidadesCotizacion();
+        SoporteVehiculos sop = SoporteVehiculos.getInstance();
+
+        System.out.println("\n\uD83D\uDCB3Tarifa de SoporteVehiculos: \n");
+        System.out.println(sop.calcularTarifa(cotizacion1.getVehiculo().getMarca().getNombre(),cotizacion1.getVehiculo().getModelo().getNombre(),cotizacion1.getVehiculo().getFechaMatriculacion().getYear()));
+
+        System.out.println("\n\uD83D\uDCB3Tarifas de UtilidadesCotizacion: \n");
+        System.out.println(util.calcTarifa(cotizacion1));
+        System.out.println(util.calcTarifa(cotizacion2));
+        System.out.println(util.calcTarifa(cotizacion3));
+
+
 
     }
 

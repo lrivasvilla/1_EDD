@@ -152,8 +152,13 @@ public class Vehiculo {
 
     //ToString
     public String toString() {
-        return "\n"+"\n Id: "+getId()+"\n Marca: "+getMarca()+"\n Modelo: "+getModelo()+"\n Matrícula: "
-                +getMatricula()+"\n Fecha de matriculación: "+getFechaMatriculacion()+"\n Color: "+getColor()+
-                "\n Dueño actual: ▼"+getDuenyoActual();
+        return  "\nId: "+ getId()+
+                "\nMarca: "+getMarca()+
+                "\nModelo: "+getModelo()+
+                "\nMatrícula: " +getMatricula()+
+                "\nFecha de matriculación: "+getFechaMatriculacion()+
+                "\nColor: "+getColor()+
+                "\nDueño actual: ▼"+"\n"+getDuenyoActual()+
+                "\n              ▲";
     }
 }

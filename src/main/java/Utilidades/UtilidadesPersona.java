@@ -16,18 +16,15 @@ public class UtilidadesPersona {
             return false;
         }
 
-        //Extrayendo numero y letra final.
         String numeroStr = "";
         char letraFinal = Character.toUpperCase(nif.charAt(8));
 
-        // Verificar si es NIE
-        if (Character.isLetter(nif.charAt(0))) {  //Si el primer caracter es letra
-            char primeraLetra = Character.toUpperCase(nif.charAt(0));  //Guardamos la letra (la primera)
-            if (primeraLetra != 'X' && primeraLetra != 'Y' && primeraLetra != 'Z') { // Si la letra es diferente a esas, es false
+        if (Character.isLetter(nif.charAt(0))) {
+            char primeraLetra = Character.toUpperCase(nif.charAt(0));
+            if (primeraLetra != 'X' && primeraLetra != 'Y' && primeraLetra != 'Z') {
                 return false;
             }
 
-            //Generar el número a partir de NIE
             if (primeraLetra == 'X'){
                 numeroStr = '0'+nif.substring(1,8);
             }

@@ -21,51 +21,53 @@ public class pruebaV2 {
         Direccion direccion2 = new Direccion(TipoVia.CALLE,"Feria", 12, "1º 'A'","41002","Sevilla","Sevilla");
 
         //Persona
-        Persona persona1 = new Persona("Guillermo","Tejado","Sánchez","20078541A",fecha1,direccion1, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
-        Persona persona2 = new Persona("Luis","Rivas","Villa","20061394N",fecha1,direccion2,Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
+        Persona persona1 = new Persona("Guillermo","Tejado","Sánchez","70406755Y",fecha1,direccion1, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
+        Persona persona2 = new Persona("Luis","Rivas","Villa","20061394N",fecha4,direccion2,Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
 
         //Conductor
-        Conductor conductor1 = new Conductor("Guillermo","Tejado","Sánchez","20078541A",fecha1,direccion1,Sexo.MASCULINO,"España","dsdsd@gmail.com","654879654",fecha3,12,8);
+        Conductor conductor1 = new Conductor("Guillermo","Tejado","Sánchez","70406755Y",fecha1,direccion1,Sexo.MASCULINO,"España","dsdsd@gmail.com","654879654",fecha3,12,8);
 
         //Vehiculo
-        Vehiculo vehiculo1 = new Vehiculo("Ford","Focus","2673DGC",fecha3,"Azul marino",persona2);
-        Vehiculo vehiculo2 = new Vehiculo("Ford","Focus","2673DGC",fecha4,"Azul marino",persona1);
-        Vehiculo vehiculo3 = new Vehiculo("Ford","Focus","2673DGC",fecha1,"Azul marino",persona2);
+        Vehiculo vehiculo1 = new Vehiculo("Ford","Focus","4366KCJ",fecha3,"Azul marino",persona2);
+        Vehiculo vehiculo2 = new Vehiculo("Audi","A4","9497GCG",fecha3,"Azul marino",persona1);
+        Vehiculo vehiculo3 = new Vehiculo("BMW","Z4","2864HDB",fecha1,"Azul marino",persona2);
 
         List<Vehiculo> listaVehiculos = Arrays.asList(vehiculo1,vehiculo2,vehiculo3);
 
         //Coche
-        Coche coche1 = new Coche("Ford","Focus","2673DGC",fecha5,"Azul marino",persona2,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
+        Coche coche1 = new Coche("Ford","Focus","4366KCJ",fecha5,"Azul marino",persona2,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
 
         //Moto
-        Moto moto1 = new Moto("Davisson´s","Harley","5249JHG",fecha4,"Negro",persona1,49,false);
+        Moto moto1 = new Moto("Kawasaki","Z900","2864HDB",fecha3,"Negro",persona1,49,false);
 
-        System.out.println(persona1);
-        System.out.println(conductor1);
-        System.out.println(vehiculo1);
-        System.out.println(coche1);
-        System.out.println(moto1);
+        //Aseguradora
+        Aseguradora aseg = new Aseguradora("Aseguradora Aseg",direccion1,"654123587",listaVehiculos);
 
 
         System.out.println("\n✅Verificar DNI/NIE (indicándolo):");
+
         if(UtilidadesPersona.esNIFValido("20061394N")){
             System.out.println("DNI/NIE válido");
-        }else{
+            }
             System.out.println("DNI/NIE inválido");
-        };
+
 
         System.out.println("\n✅Verificar DNI/NIE (Persona):");
-        if(UtilidadesPersona.esNIFValido(persona2)){
-            System.out.println("DNI/NIE válido");
-        }else{
-            System.out.println("DNI/NIE inválido");
-        };
+        try{
+            Persona personax = new Persona("Guillermo","Tejado","Sánchez","70406755",fecha1,direccion1, Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
+            if(UtilidadesPersona.esNIFValido(personax)){
+                System.out.println("DNI/NIE válido");
+            }
+        } catch (IllegalArgumentException e){
+            System.out.println("DNI/NIE NO válido");
+        }
+
 
         System.out.println("\n✅Calcular edad de una persona (Persona):");
         System.out.println(UtilidadesPersona.getEdad(persona1)+" años");
 
         System.out.println("\n✅Calcular si una persona es mayor de edad (Persona):");
-        if (UtilidadesPersona.esMayorEdad(persona1)) {
+        if (UtilidadesPersona.esMayorEdad(persona2)) {
             System.out.println("Persona mayor de edad");
         }else{
             System.out.println("Persona menor de edad");
@@ -90,12 +92,15 @@ public class pruebaV2 {
 
         System.out.println("\n✅Calcular si la fecha de matriculación es válida (LocalDate):");
         if(UtilidadesVehiculo.validaFechaMatriculacion(fecha5)){
-            System.out.println("La fcha de matriculación es valida");
+            System.out.println("La fecha de matriculación es valida");
         }else{
             System.out.println("La fecha de matriculación es invalida");
         }
 
-        System.out.println("\n✅Reibir lista de coches indicando la persona que es dueña:");
+        System.out.println("\n✅Recibir lista de coches indicando la persona que es dueña:\n");
         System.out.println(UtilidadesVehiculo.getVehiculos(listaVehiculos,persona2));
+
+        System.out.println("\n\uD83D\uDEE1️\uD83D\uDEE1️\uD83D\uDEE1️ Aseguradora \uD83D\uDEE1️\uD83D\uDEE1️\uD83D\uDEE1️\n");
+        System.out.println(aseg);
     }
 }

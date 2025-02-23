@@ -109,6 +109,10 @@ public class Aseguradora {
 
     //ToString
     public String toString() {
-        return id+", "+nombre+", "+direccion+", "+telefono+", "+vehiculosAsegurados;
+
+        return  "Nombre: " + getNombre() +
+                "\nDireccion: " + getDireccion() +
+                "\nTelefono: " + getTelefono()+
+                "\nVehículos asegurados: ▼" + "\n"+"\t"+getVehiculosAsegurados();
     }
 }

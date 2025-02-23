@@ -29,11 +29,11 @@ public class UtilidadesAseguradora {
         List<Poliza> polizasDniTomador = new ArrayList<>();
 
         for(Poliza poli : aseguradora.getListaPolizas()){
-            if(poli.getTomador().getNif().equalsIgnoreCase(nif)){
+            if(poli.getTomador().getNif().equals(nif)){
                 polizasDniTomador.add(poli);
             }
         }
-        return null;
+        return polizasDniTomador;
     }
 
     public List<Poliza> recuperaPolizasPorConductor(Aseguradora aseguradora,String nif){

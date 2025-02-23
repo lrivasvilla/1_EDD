@@ -185,16 +185,21 @@ public class Poliza {
                 "\nAnualidades: "+getAnualidades().getLast().getNumero()+
                 "\nEstado: "+getEstadoPoliza()+
                 "\nMotivo de anulación: "+getMotivoAnulacion()+
-                "\nÚltima base de cotización: ▼"+
-                "\n\t"+getUltimaCotizacionBase().getModalidadElegida().toString()+"\n"+
+                "\nÚltima base de cotización: ▼"+"\n"+
+                "\n\t"+"Cotización: "+getUltimaCotizacionBase().getModalidadElegida()+" - "+getPrecioModalidad()+" €"+
+                "\n\t"+"Vehículo: "+getUltimaCotizacionBase().getVehiculo().getMarca()+" "+getUltimaCotizacionBase().getVehiculo().getModelo()+" "+getUltimaCotizacionBase().getVehiculo().getColor()+" - "+getUltimaCotizacionBase().getVehiculo().getMatricula()+
+                "\n\t"+"Fecha de matriculación: "+getUltimaCotizacionBase().getVehiculo().getFechaMatriculacion()+
+                "\n\t"+"Dueño: "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getNombre()+" "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getApellido1()+" "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getApellido2()+ " - " +getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getNif()+
+                "\n\t"+"Siniestros en los últimos 5 años: "+getUltimaCotizacionBase().getNumSin5()+
+                "\n\t"+"¿Aparcamiento privado?: "+getUltimaCotizacionBase().isTieneAparcamientoPrivado()+"\n"+
                 "\nTomador: ▼"+
-                "\n\t"+getTomador().getNombre()+" "+getTomador().getApellido1()+" "+getTomador().getApellido2()+" "+getTomador().getNif()+"\n"+
+                "\n\t"+getTomador()+"\n"+
                 "\nConductor principal: ▼"+
-                "\n\t"+getConductorPrincipal().getNombre()+" "+getConductorPrincipal().getApellido1()+" "+getConductorPrincipal().getApellido2()+" "+getConductorPrincipal().getNif()+"\n"+
+                "\n\t"+getConductorPrincipal()+"\n"+
                 "\nConductores ocasionales: ▼"+
-                "\n\t"+listAux+"\n"+
-                "\nPrecio modalidad: "+getPrecioModalidad()+"€"+
-                "\nPrecio final: "+getPrecioFinal()+"€"+
+                "\n\t"+getConductoresOcasionales()+"\n"+
+                "\nPrecio modalidad: "+getPrecioModalidad()+" €"+
+                "\nPrecio final: "+getPrecioFinal()+" €"+
                 "\nFecha de inicio de la anualidad: "+getFechaInicioAnualidad()+
                 "\nFecha final de la anualidad: "+getFechaFinAnualidad()+
                 "\nFecha de anulación: "+getFechaAnulacion();

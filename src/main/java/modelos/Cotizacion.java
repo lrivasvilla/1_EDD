@@ -25,9 +25,9 @@ public class Cotizacion {
     private modalidadElegida modalidadElegida;
 
     //Constructor
-    public Cotizacion(int codigo,LocalDate fechaCotizacion, LocalDate fechaInicio, Vehiculo vehiculo, Persona tomador, Conductor conductorPrincipal, List<Conductor> conductoresOcasionales, boolean tieneAparcamientoPrivado, int numSin5, modalidadElegida modalidadElegida) {
+    public Cotizacion(LocalDate fechaCotizacion, LocalDate fechaInicio, Vehiculo vehiculo, Persona tomador, Conductor conductorPrincipal, List<Conductor> conductoresOcasionales, boolean tieneAparcamientoPrivado, int numSin5, modalidadElegida modalidadElegida) {
         this.id = contador;
-        this.codigo = codigo;
+        this.codigo = contador;
         this.fechaCotizacion = fechaCotizacion;
         this.fechaInicio = fechaInicio;
         this.vehiculo = vehiculo;
@@ -197,16 +197,16 @@ public class Cotizacion {
                 "\nFecha de cotización: "+getFechaCotizacion()+
                 "\nFecha de inicio: "+getFechaInicio()+
                 "\nVehiculo: ▼"+
-                "\n\t"+getVehiculo().getMarca()+" "+getVehiculo().getModelo()+" "+getVehiculo().getMatricula()+"\n"+
+                "\n\t"+getVehiculo()+
                 "\nConductor principal: ▼"+
-                "\n\t"+getConductorPrincipal().getNombre()+" "+getConductorPrincipal().getApellido1()+" "+getConductorPrincipal().getApellido2()+" "+getConductorPrincipal().getNif()+"\n"+
+                "\n\t"+getConductorPrincipal()+"\n"+
                 "\nConductores ocasionales: ▼"+
-                "\n\t"+listAux+"\n"+
+                "\n\t"+getConductoresOcasionales()+"\n"+
                 "\n¿Tiene aparcamiento privado?: "+isTieneAparcamientoPrivado()+
                 "\nAños sin siniestro: "+getNumSin5()+
                 "\nPrecio terceros: "+getPrecioTERC()+"€"+
                 "\nPrecio de terceros ampliados: "+getPrecioTAMP()+"€"+
                 "\nPrecio a todo riesgo: "+getPrecioTRIE()+"€"+
-                "\nModalidad: "+getModalidadElegida();
+                "\nModalidad: "+getModalidadElegida()+"\n";
     }
 }

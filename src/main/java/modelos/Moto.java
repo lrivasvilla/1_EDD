@@ -64,6 +64,8 @@ public class Moto extends Vehiculo {
     //ToString
     public String toString() {
 
-        return super.toString() + "\n\n Cilindrada: " + cilindradaCC + "\n ¿Tiene sidecar?: " + tieneSidecar+"\n";
+        return super.toString() +
+                "\nCilindrada: " + getCilindradaCC() + " cc"+
+                "\n¿Tiene sidecar?: " + isTieneSidecar();
     }
 }

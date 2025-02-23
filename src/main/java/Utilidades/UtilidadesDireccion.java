@@ -8,12 +8,17 @@ import java.util.Map;
 public class UtilidadesDireccion {
     public static boolean esCPValido(String cp){
 
-        String dosPrimeros = cp.substring(0, 2);
-        int codPos = Integer.parseInt(cp);
+        try{
+            String dosPrimeros = cp.substring(0, 2);
+            int codPos = Integer.parseInt(cp);
 
-        if(cp.length()==5 && codPos>=1001 && codPos<=52999){
-            return true;
+            if(cp.length()==5 && codPos>=1001 && codPos<=52999){
+                return true;
             }
+
+        }catch(Exception e){
+            return false;
+        }
 
         return false;
     }

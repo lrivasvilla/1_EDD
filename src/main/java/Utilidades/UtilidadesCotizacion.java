@@ -36,13 +36,16 @@ public class UtilidadesCotizacion {
         }
 
         double multiplicadorSin5 = 1.0;
-        if(cot.getNumSin5() < 5){
-            multiplicadorSin5 *= 1.05;
-        }if(cot.getNumSin5() < 3){
-            multiplicadorSin5 *= 1.07;
-        }if(cot.getNumSin5() < 2){
+        if(cot.getNumSin5() > 5){
             multiplicadorSin5 *= 2;
+        }if(cot.getNumSin5() > 4){
+            multiplicadorSin5 *= 1.07;
+        }if(cot.getNumSin5() >= 3){
+            multiplicadorSin5 *= 1.05;
+        }if(cot.getNumSin5() > 1){
+            multiplicadorSin5 *= 1.01;
         }
+
 
         Tarifa tarifaFinal = sop.calcularTarifa(marca, modelo, anyo);
 

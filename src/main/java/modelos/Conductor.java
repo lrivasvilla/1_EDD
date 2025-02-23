@@ -78,6 +78,8 @@ public class Conductor extends Persona {
     //ToString
     public String toString() {
 
-        return super.toString() + "\n\t\tPuntos de carnet: " + getPuntosCarnet() + "\n\t\tAños asegurado: " + getAnyosAsegurado();
+        return super.toString() +
+                "\t\tPuntos de carnet: " + getPuntosCarnet() +
+                "\n\t\tAños asegurado: " + getAnyosAsegurado();
     }
 }

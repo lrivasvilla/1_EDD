@@ -91,7 +91,10 @@ public class Coche extends Vehiculo {
 
     //ToString
     public String toString() {
-        return super.toString() + "\n\n Número de puertas: " + getNumeroPuerta() + "\n Tipo de combustible: " +
-                getTipoCombustible() + "\n Tracción: " + getTraccion()+ "\n T¿Es todoterreno?: "+isEsTodoTerreno() + "\n";
+        return super.toString() +
+                "\nNúmero de puertas: " + getNumeroPuerta() +
+                "\nTipo de combustible: " + getTipoCombustible() +
+                "\nTracción: " + getTraccion()+
+                "\n¿Es todoterreno?: "+isEsTodoTerreno();
     }
 }

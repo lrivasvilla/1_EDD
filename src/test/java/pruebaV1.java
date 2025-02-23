@@ -22,30 +22,39 @@ public class pruebaV1 {
 
         //Persona
         Persona persona1 = new Persona("Guillermo","Tejado","Sánchez","20061394N",fecha1,direccion1,Sexo.MASCULINO,"España","gtejado@gmail.com","651478952");
-        Persona persona2 = new Persona("Luis","Rivas","Villa","20061394N",fecha1,direccion2,Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
+        Persona persona2 = new Persona("Luis","Rivas","Villa","45021931Y",fecha1,direccion2,Sexo.MASCULINO,"España","lrivasvilla@gmail.com","640580977");
 
         //Conductor
-        Conductor conductor1 = new Conductor("Guillermo","Tejado","Sánchez","20061394N",fecha1,direccion1,Sexo.MASCULINO,"España","juasjuas@gfne.com","652147896",fecha3,12,8);
+        Conductor conductor1 = new Conductor("Guillermo","Tejado","Sánchez","45021931Y",fecha1,direccion1,Sexo.MASCULINO,"España","juasjuas@gfne.com","652147896",fecha3,12,8);
 
         //Vehiculo
         Vehiculo vehiculo1 = new Vehiculo("Ford","Focus","2673DGC",fecha3,"Azul marino",persona2);
-        Vehiculo vehiculo2 = new Vehiculo("Ford","Focus","2673DGC",fecha4,"Azul marino",persona1);
-        Vehiculo vehiculo3 = new Vehiculo("Ford","Focus","2673DGC",fecha1,"Azul marino",persona2);
+        Vehiculo vehiculo2 = new Vehiculo("Audi","A4","2433JJL",fecha4,"Azul marino",persona1);
+        Vehiculo vehiculo3 = new Vehiculo("BMW","Z4","0664DHF",fecha1,"Azul marino",persona2);
 
         List<Vehiculo> listaVehiculos = Arrays.asList(vehiculo1,vehiculo2,vehiculo3);
 
         //Coche
-        Coche coche1 = new Coche("Ford","Focus","2673DGC",fecha5,"Azul marino",persona2,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
+        Coche coche1 = new Coche("Audi","A4","3261LLL",fecha5,"Azul marino",persona2,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
+        Coche coche2 = new Coche("Ford","Focus","3261LLL",fecha5,"Azul marino",persona2,5,TipoCombustible.DIESEL,Traccion.TRASERA,false);
 
         //Moto
-        Moto moto1 = new Moto("Kawasaki","Ninja ZX-6R","2673DGC",fecha4,"Negro",persona1,49,false);
-        Moto moto2 = new Moto("Honda","Rebel 500","2673DGC",fecha4,"Negro",persona1,49,false);
+        Moto moto1 = new Moto("Kawasaki","Ninja ZX-6R","3261LLL",fecha4,"Negro",persona1,49,false);
+        Moto moto2 = new Moto("Honda","Rebel 500","4753KCD",fecha4,"Negro",persona1,49,false);
 
+        System.out.println("\n\uD83D\uDE4B\uD83D\uDE4B\uD83D\uDE4B PERSONA \uD83D\uDE4B\uD83D\uDE4B\uD83D\uDE4B");
         System.out.println(persona1);
+        System.out.println("\n⚙️⚙️⚙️ CONDUCTOR ⚙️⚙️⚙️");
         System.out.println(conductor1);
+        System.out.println("\n\uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5 VEHÍCULO 🚗🚗🚗\n");
         System.out.println(vehiculo1);
+        System.out.println("\n\uD83D\uDE97\uD83D\uDE97\uD83D\uDE97 COCHE \uD83D\uDE97\uD83D\uDE97\uD83D\uDE97");
         System.out.println(coche1);
+        System.out.println("\n\uD83D\uDE97\uD83D\uDE97\uD83D\uDE97 COCHE \uD83D\uDE97\uD83D\uDE97");
+        System.out.println(coche2);
+        System.out.println("\n\uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5 MOTO \uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5");
         System.out.println(moto1);
+        System.out.println("\n\uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5 MOTO \uD83D\uDEF5\uD83D\uDEF5\uD83D\uDEF5");
         System.out.println(moto2);
 
 

@@ -155,9 +155,13 @@ public class Persona {
 
     //ToString
     public String toString() {
-        return "\n\t Nombre: "+getNombre()+"\n\t Apellido 1: "+getApellido1()+"\n\t Apellido 2: "
-                +getApellido2()+"\n\t DNI/NIE "+getNif()+"\n\t Fecha de nacimiento: "+getFechaNacimiento()+"\n\t Dirección: "
-                +getDireccion()+"\n\t Sexo: "+getSexo()+"\n\t País de origen: "+getPaisOrigen()+"\n\t Email: "+getEmail()+
-                "\n\t Telefono: "+getTelefono();
+        return  "\n\tNombre: "+getNombre()+" "+getApellido1()+" "+getApellido2()+
+                "\n\tNIF: "+getNif()+
+                "\n\tFecha de nacimiento: "+getFechaNacimiento()+
+                "\n\tDirección: " +getDireccion()+
+                "\n\tSexo: "+getSexo()+
+                "\n\tPaís de origen: "+getPaisOrigen()+
+                "\n\tEmail: "+getEmail()+
+                "\n\tTeléfono: "+getTelefono()+"\n";
     }
 }

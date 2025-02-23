@@ -29,9 +29,9 @@ public class AnualidadPoliza {
 
     //Constructor
     public AnualidadPoliza(EstadoPoliza estadoPoliza, String motivoAnulacion,  Cotizacion cotizacionBase,
-                           ModoPago modoPago, boolean esPagoFraccionado, LocalDate fechaInicioAnualidad, LocalDate fechaFinAnualidad,
+                           ModoPago modoPago, boolean esPagoFraccionado, LocalDate fechaInicioAnualidad,
                            LocalDate fechaAnulacion) {
-        this.id = contador;
+        this.id = contador+1;
         this.estadoPoliza = estadoPoliza;
         this.motivoAnulacion = motivoAnulacion;
         this.cotizacionBase = cotizacionBase;
@@ -63,7 +63,7 @@ public class AnualidadPoliza {
             this.precioFinal = (double) Math.round((this.precioFinal * 1.02) * 100) /100;
         }
         this.fechaInicioAnualidad = fechaInicioAnualidad;
-        this.fechaFinAnualidad = fechaFinAnualidad;
+        this.fechaFinAnualidad = fechaInicioAnualidad.plusYears(1);
         this.numero = calcularNumeroPoliza(fechaInicioAnualidad);
         this.fechaAnulacion = fechaAnulacion;
 
@@ -211,7 +211,7 @@ public class AnualidadPoliza {
     }
 
     // Calcular número de poliza
-    private static int contador = 1;
+    private static int contador = 0;
 
     public String calcularNumeroPoliza(LocalDate fechaInicioAnualidad){
 
