@@ -62,17 +62,15 @@ public class Conductor extends Persona {
     }
 
     //OtrosMetodos
-
-    public boolean equals(Conductor conductor) {
-        if(this.getId() == conductor.getId() && this.getNif().equalsIgnoreCase(conductor.getNif())){
-            return true;
-        }
-        return false;
-
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Conductor conductor = (Conductor) o;
+        return puntosCarnet == conductor.puntosCarnet && anyosAsegurado == conductor.anyosAsegurado && Objects.equals(fechaCarnet, conductor.fechaCarnet);
     }
 
-    public int hashCode(Conductor conductor) {
-        return conductor.hashCode();
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), fechaCarnet, puntosCarnet, anyosAsegurado);
     }
 
     //ToString

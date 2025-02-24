@@ -1,11 +1,8 @@
 package modelos;
-
-import Utilidades.UtilidadesPersona;
 import Utilidades.UtilidadesVehiculo;
 import com.aseguradora.utils.Marca;
 import com.aseguradora.utils.Modelo;
 import com.aseguradora.utils.SoporteVehiculos;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -51,7 +48,6 @@ public class Vehiculo {
     //Constructor
     public Vehiculo(Marca marca, Modelo modelo, String matricula, LocalDate fechaMatriculacion, String color, Persona duenyoActual) {
         this.id = contador;
-        SoporteVehiculos sop = SoporteVehiculos.getInstance();
         this.marca = marca;
         this.modelo = modelo;
         if(UtilidadesVehiculo.esMatriculaValida(matricula)){
@@ -137,15 +133,15 @@ public class Vehiculo {
     }
 
     //OtrosMetodos
-    public boolean equals(Vehiculo vehiculo) {
-        if(this.getId() == vehiculo.getId() && this.getMatricula().equalsIgnoreCase(vehiculo.getMatricula()) && this.getFechaMatriculacion().isEqual(vehiculo.getFechaMatriculacion())){
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehiculo vehiculo = (Vehiculo) o;
+        return id == vehiculo.id && Objects.equals(matricula, vehiculo.matricula) && Objects.equals(fechaMatriculacion, vehiculo.fechaMatriculacion) && Objects.equals(duenyoActual, vehiculo.duenyoActual);
     }
 
-    public int hashCode(Vehiculo vehiculo) {
-        return vehiculo.hashCode();
+
+    public int hashCode() {
+        return Objects.hash(id, matricula, fechaMatriculacion, duenyoActual);
     }
 
     private static int contador = 1;

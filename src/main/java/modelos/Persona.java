@@ -139,16 +139,14 @@ public class Persona {
     }
 
     //OtrosMetodos
-    public boolean equals(Persona persona) {
-
-        if (this.id == persona.getId() && this.nif.equalsIgnoreCase(persona.getNif())) {
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return id == persona.id && Objects.equals(nif, persona.nif) && Objects.equals(fechaNacimiento, persona.fechaNacimiento) && Objects.equals(telefono, persona.telefono);
     }
 
-    public int hashCode(Persona persona) {
-        return persona.hashCode();
+    public int hashCode() {
+        return Objects.hash(id, nif, fechaNacimiento, telefono);
     }
 
     private static int contador = 1;

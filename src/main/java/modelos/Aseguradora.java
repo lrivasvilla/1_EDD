@@ -3,6 +3,7 @@ package modelos;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Aseguradora {
     //Atributos
@@ -82,12 +83,14 @@ public class Aseguradora {
     }
 
     //OtrosMetodos
-    public boolean equals(Aseguradora aseguradora) {
-        return aseguradora.id == this.id;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Aseguradora that = (Aseguradora) o;
+        return id == that.id && Objects.equals(nombre, that.nombre) && Objects.equals(direccion, that.direccion) && Objects.equals(telefono, that.telefono) && Objects.equals(vehiculosAsegurados, that.vehiculosAsegurados) && Objects.equals(listaPolizas, that.listaPolizas);
     }
 
-    public int hashCode(Aseguradora aseguradora){
-        return aseguradora.hashCode();
+    public int hashCode() {
+        return Objects.hash(id, nombre, direccion, telefono, vehiculosAsegurados, listaPolizas);
     }
 
     private static int contador = 1;

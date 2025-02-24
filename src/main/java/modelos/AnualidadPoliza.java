@@ -6,6 +6,7 @@ import com.aseguradora.utils.Tarifa;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AnualidadPoliza {
     //Atributos
@@ -202,12 +203,14 @@ public class AnualidadPoliza {
     }
 
     //HasCode y Equals
-    public int hashCode(AnualidadPoliza anualidadPoliza) {
-        return anualidadPoliza.hashCode();
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        AnualidadPoliza that = (AnualidadPoliza) o;
+        return id == that.id && esPagoFraccionado == that.esPagoFraccionado && Objects.equals(numero, that.numero) && Objects.equals(cotizacionBase, that.cotizacionBase) && Objects.equals(tomador, that.tomador) && Objects.equals(conductorPrincipal, that.conductorPrincipal) && Objects.equals(fechaInicioAnualidad, that.fechaInicioAnualidad);
     }
 
-    public boolean equals(AnualidadPoliza anualidadPoliza) {
-        return this.id == anualidadPoliza.id && this.numero.equals(anualidadPoliza.numero) && this.tomador.equals(anualidadPoliza.tomador);
+    public int hashCode() {
+        return Objects.hash(id, numero, cotizacionBase, esPagoFraccionado, tomador, conductorPrincipal, fechaInicioAnualidad);
     }
 
     // Calcular número de poliza

@@ -192,10 +192,10 @@ public class PruebaV5 {
         Aseguradora asg = new Aseguradora("ASG",dir3,"658541214",listaVehiculos);
         asg.addPoliza(poliza1);
 
-        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDCRecuperar póliza por número \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC  Recuperar póliza por número \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         System.out.println(util.recuperaPoliza(asg,poliza1.getNumero()));
 
-        System.out.println("\nRecuperar póliza activas \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Recuperar póliza activas \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         System.out.println(util.recuperaPolizasActivas(asg));
 
         System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Recuperar póliza por NIF del tomador \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");

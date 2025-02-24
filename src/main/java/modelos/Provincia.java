@@ -2,6 +2,8 @@ package modelos;
 
 import Utilidades.UtilidadesDireccion;
 
+import java.util.Objects;
+
 public class Provincia {
     //Atributos
     private String nombre;
@@ -40,19 +42,14 @@ public class Provincia {
     }
 
     //Equals y HashCode
-    public boolean equals(Provincia p) {
-        if(this == p || p == null){
-            return false;
-        }
-        if(getCodigo().equals(p.getCodigo()) && getNombre().equals(p.getNombre())){
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Provincia provincia = (Provincia) o;
+        return Objects.equals(nombre, provincia.nombre) && Objects.equals(codigo, provincia.codigo);
     }
 
-
-    public int hashCode(Provincia provincia) {
-        return provincia.hashCode();
+    public int hashCode() {
+        return Objects.hash(nombre, codigo);
     }
 
     //ToString

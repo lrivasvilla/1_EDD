@@ -4,6 +4,7 @@ import com.aseguradora.utils.Marca;
 import com.aseguradora.utils.Modelo;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Moto extends Vehiculo {
     //Atributos
@@ -54,11 +55,15 @@ public class Moto extends Vehiculo {
     }
 
     // equals y hashCode
-    public boolean equals(Moto moto) {
-        if (this.getId() == moto.getId() && this.getMatricula().equalsIgnoreCase(moto.getMatricula()) && this.cilindradaCC == moto.getCilindradaCC()) {
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Moto moto = (Moto) o;
+        return cilindradaCC == moto.cilindradaCC && tieneSidecar == moto.tieneSidecar;
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cilindradaCC, tieneSidecar);
     }
 
     //ToString

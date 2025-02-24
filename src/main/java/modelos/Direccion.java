@@ -4,6 +4,7 @@ import Utilidades.UtilidadesDireccion;
 import com.aseguradora.utils.SoporteVehiculos;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Direccion {
     //Atributos
@@ -136,15 +137,16 @@ public class Direccion {
     }
 
     //Equals y HasCode
-    public boolean equals(Direccion direccion) {
-        if(this == direccion || direccion == null){
-            return false;
-        }
-        if(this.getId() == direccion.getId() && this.getTipoVia().equals(direccion.getTipoVia())){
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Direccion direccion = (Direccion) o;
+        return id == direccion.id && Objects.equals(nombreVia, direccion.nombreVia) && Objects.equals(codigoPostal, direccion.codigoPostal) && Objects.equals(localidad, direccion.localidad);
     }
+
+    public int hashCode() {
+        return Objects.hash(id, nombreVia, codigoPostal, localidad);
+    }
+
     private static int contador = 1;
     //ToString
     public String toString() {

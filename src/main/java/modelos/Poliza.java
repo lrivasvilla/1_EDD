@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class Poliza {
     //Atributos
@@ -165,11 +166,14 @@ public class Poliza {
     }
 
     //HasCode y Equals
-    public int hashCode (Poliza poliza) {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Poliza poliza = (Poliza) o;
+        return id == poliza.id && Objects.equals(numero, poliza.numero) && Objects.equals(tomador, poliza.tomador) && Objects.equals(fechaInicioAnualidad, poliza.fechaInicioAnualidad);
     }
-    public boolean equals (Poliza poliza) {
-        return this.id == poliza.id && this.numero.equals(poliza.numero) && this.tomador.equals(poliza.tomador);
+
+    public int hashCode() {
+        return Objects.hash(id, numero, tomador, fechaInicioAnualidad);
     }
 
     private static int contador = 1;

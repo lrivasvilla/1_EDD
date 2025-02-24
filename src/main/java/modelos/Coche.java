@@ -78,15 +78,15 @@ public class Coche extends Vehiculo {
     }
 
     // equals y hasCode
-    public boolean equals(Coche coche){
-        if(this.getId() == coche.getId() && this.getMatricula().equalsIgnoreCase(coche.getMatricula()) && this.getNumeroPuerta() == coche.getNumeroPuerta()){
-            return true;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Coche coche = (Coche) o;
+        return numeroPuerta == coche.numeroPuerta && esTodoTerreno == coche.esTodoTerreno && tipoCombustible == coche.tipoCombustible && traccion == coche.traccion;
     }
 
-    public int hashCode(Coche coche) {
-        return super.hashCode()+coche.getNumeroPuerta();
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numeroPuerta, tipoCombustible, traccion, esTodoTerreno);
     }
 
     //ToString

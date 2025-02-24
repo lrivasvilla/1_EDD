@@ -5,6 +5,7 @@ import Utilidades.UtilidadesCotizacion;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cotizacion {
     //Atributos
@@ -174,15 +175,14 @@ public class Cotizacion {
     }
 
     //HashCode y Equals
-    public int hashCode(Cotizacion cotizacion) {
-        return cotizacion.hashCode();
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cotizacion that = (Cotizacion) o;
+        return id == that.id && codigo == that.codigo && Objects.equals(fechaCotizacion, that.fechaCotizacion) && Objects.equals(tomador, that.tomador);
     }
 
-    public boolean equals(Cotizacion cotizacion) {
-        if(this.id == cotizacion.id && this.codigo == cotizacion.codigo && this.vehiculo == cotizacion.vehiculo && this.tomador.equals(cotizacion.tomador)) {
-            return true;
-        }
-        return false;
+    public int hashCode() {
+        return Objects.hash(id, codigo, fechaCotizacion, tomador);
     }
 
     private static int contador = 1;
