@@ -39,7 +39,6 @@ public class Poliza {
         this.fechaInicioAnualidad = anualidades.getLast().getFechaInicioAnualidad();
         this.fechaFinAnualidad = anualidades.getLast().getFechaFinAnualidad();
         this.fechaAnulacion = anualidades.getLast().getFechaAnulacion();
-
         contador ++;
     }
 
@@ -131,9 +130,7 @@ public class Poliza {
     public List<Conductor> getConductoresOcasionales() {
         return conductoresOcasionales;
     }
-    public void setConductoresOcasionales(List<Conductor> conductoresOcasionales) {
-        this.conductoresOcasionales = conductoresOcasionales;
-    }
+    public void setConductoresOcasionales(List<Conductor> conductoresOcasionales) {this.conductoresOcasionales = conductoresOcasionales;}
     public double getPrecioModalidad() {
         return precioModalidad;
     }
@@ -149,9 +146,7 @@ public class Poliza {
     public LocalDate getFechaInicioAnualidad() {
         return fechaInicioAnualidad;
     }
-    public void setFechaInicioAnualidad(LocalDate fechaInicioAnualidad) {
-        this.fechaInicioAnualidad = fechaInicioAnualidad;
-    }
+    public void setFechaInicioAnualidad(LocalDate fechaInicioAnualidad) {this.fechaInicioAnualidad = fechaInicioAnualidad;}
     public LocalDate getFechaFinAnualidad() {
         return fechaFinAnualidad;
     }
@@ -191,7 +186,7 @@ public class Poliza {
                 "\nMotivo de anulación: "+getMotivoAnulacion()+
                 "\nÚltima base de cotización: ▼"+"\n"+
                 "\n\t"+"Cotización: "+getUltimaCotizacionBase().getModalidadElegida()+" - "+getPrecioModalidad()+" €"+
-                "\n\t"+"Vehículo: "+getUltimaCotizacionBase().getVehiculo().getMarca()+" "+getUltimaCotizacionBase().getVehiculo().getModelo()+" "+getUltimaCotizacionBase().getVehiculo().getColor()+" - "+getUltimaCotizacionBase().getVehiculo().getMatricula()+
+                "\n\t"+"Vehículo: "+getUltimaCotizacionBase().getVehiculo().getMarca()+" "+getUltimaCotizacionBase().getVehiculo().getModelo()+", Color: "+getUltimaCotizacionBase().getVehiculo().getColor()+" - "+getUltimaCotizacionBase().getVehiculo().getMatricula()+
                 "\n\t"+"Fecha de matriculación: "+getUltimaCotizacionBase().getVehiculo().getFechaMatriculacion()+
                 "\n\t"+"Dueño: "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getNombre()+" "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getApellido1()+" "+getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getApellido2()+ " - " +getUltimaCotizacionBase().getVehiculo().getDuenyoActual().getNif()+
                 "\n\t"+"Siniestros en los últimos 5 años: "+getUltimaCotizacionBase().getNumSin5()+

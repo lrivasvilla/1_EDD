@@ -174,8 +174,13 @@ public class PruebaV5 {
         listaAnualidadPolizas.add(anu2);
         listaAnualidadPolizas.add(anu3);
 
+        List<AnualidadPoliza> listaAnualidadPolizas2 = new ArrayList<>();
+        listaAnualidadPolizas2.add(anu4);
+        listaAnualidadPolizas2.add(anu5);
+        listaAnualidadPolizas2.add(anu6);
 
         Poliza poliza1 = new Poliza(listaAnualidadPolizas);
+        Poliza poliza2 = new Poliza(listaAnualidadPolizas2);
 
         List<Poliza> listaPolizas = new ArrayList<>();
         listaPolizas.add(poliza1);
@@ -190,7 +195,15 @@ public class PruebaV5 {
         UtilidadesAseguradora util = new UtilidadesAseguradora();
         //Aseguradora
         Aseguradora asg = new Aseguradora("ASG",dir3,"658541214",listaVehiculos);
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Agregando póliza a la aseguradora \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         asg.addPoliza(poliza1);
+        System.out.println(asg);
+
+        System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Eliminando póliza a la aseguradora \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
+        asg.addPoliza(poliza2);
+        System.out.println(asg);
+        asg.removePoliza(poliza2.getNumero());
+        System.out.println(asg);
 
         System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC  Recuperar póliza por número \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         System.out.println(util.recuperaPoliza(asg,poliza1.getNumero()));

@@ -168,9 +168,7 @@ public class AnualidadPoliza {
     public List<Conductor> getConductoresOcasionales() {
         return conductoresOcasionales;
     }
-    public void setConductoresOcasionales(List<Conductor> conductoresOcasionales) {
-        this.conductoresOcasionales = conductoresOcasionales;
-    }
+    public void setConductoresOcasionales(List<Conductor> conductoresOcasionales) {this.conductoresOcasionales = conductoresOcasionales;}
     public double getPrecioModalidad() {
         return precioModalidad;
     }
@@ -186,9 +184,7 @@ public class AnualidadPoliza {
     public LocalDate getFechaInicioAnualidad() {
         return fechaInicioAnualidad;
     }
-    public void setFechaInicioAnualidad(LocalDate fechaInicioAnualidad) {
-        this.fechaInicioAnualidad = fechaInicioAnualidad;
-    }
+    public void setFechaInicioAnualidad(LocalDate fechaInicioAnualidad) {this.fechaInicioAnualidad = fechaInicioAnualidad;}
     public LocalDate getFechaFinAnualidad() {
         return fechaFinAnualidad;
     }
@@ -239,7 +235,10 @@ public class AnualidadPoliza {
         return  "\nNúmero: "+getNumero()+
                 "\nEstado: "+getEstadoPoliza()+
                 "\nMotivo de anulación: "+getMotivoAnulacion()+
-                "\nBase de cotización: "+getCotizacionBase().getCodigo()+
+                "\nBase de cotización: ▼"+
+                "\n\tCotización: "+getCotizacionBase().getModalidadElegida()+
+                "\n\tVehículo: "+getCotizacionBase().getVehiculo().getMarca()+" "+getCotizacionBase().getVehiculo().getModelo()+
+                "\n\tMatrícula: "+getCotizacionBase().getVehiculo().getMatricula()+"\n"+
                 "\nModo de pago: "+getModoPago()+
                 "\nPago fraccionado: "+isEsPagoFraccionado()+
                 "\nTomador: ▼"+

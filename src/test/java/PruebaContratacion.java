@@ -76,7 +76,7 @@ public class PruebaContratacion {
                 while (nombreVia.isEmpty()) {
                     System.out.println("\n\uD83C\uDFE0 Nombre de la vía: ");
                     nombreVia = sc.nextLine().trim();
-                    if (!nombreVia.isEmpty() && !nombreVia.matches("\\d+")) {
+                    if (!nombreVia.isEmpty() || !nombreVia.matches("\\d+")) {
                         nombreVia = nombreVia.substring(0, 1).toUpperCase() + nombreVia.substring(1).toLowerCase();
                     } else {
                         System.out.println("⚠️ Nombre de vía inválido ⚠️");
@@ -232,8 +232,9 @@ public class PruebaContratacion {
                         pais = sc.nextLine().trim();
                         pais = pais.substring(0, 1).toUpperCase() + pais.substring(1).toLowerCase();
 
-                        if (pais.isEmpty() && !pais.matches("\\d+")) {
+                        if (pais.isEmpty() || pais.matches("\\d+")) {
                             System.out.println("⚠️ Entrada inválida. Inténtelo de nuevo ⚠️");
+                            pais = "";
                         }
                     }catch(Exception e){
                         System.out.println("⚠️ Entrada inválida. Inténtelo de nuevo ⚠️");
@@ -447,8 +448,9 @@ public class PruebaContratacion {
                     color = sc.nextLine().trim();
                     color = color.substring(0, 1).toUpperCase() + color.substring(1);
 
-                    if (color.isEmpty()) {
-                        System.out.println("⚠️ El campo no puede estar vacío ⚠️");
+                    if (color.isEmpty() || color.matches("\\d+")) {
+                        System.out.println("⚠️ El campo no es válido ⚠️");
+                        color = "";
                     }
                 } catch (Exception e) {
                     System.out.println("⚠️ El campo no puede estar vacío ⚠️");
@@ -613,7 +615,7 @@ public class PruebaContratacion {
                 try {
                     numSin5 = sc.nextInt();
 
-                    if (numSin5 > 6 || numSin5 < 0) {
+                    if (numSin5 > 5 || numSin5 < 0) {
                         System.out.println("❌ No puedes ser asegurado ❌");
                         numSin5 = 10;
                     }
@@ -688,7 +690,9 @@ public class PruebaContratacion {
                         modoPago = AnualidadPoliza.ModoPago.IBAN;
                     } else if (opcion.equals("2")) {
                         modoPago = AnualidadPoliza.ModoPago.Tarjeta;
-                    } else {
+                    } else if (opcion.isEmpty()) {
+                        System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
+                    } else{
                         System.out.println("⚠️ La respuesta debe ser 1 ó 2 ⚠️");
                     }
                 } catch (Exception e) {
@@ -704,7 +708,6 @@ public class PruebaContratacion {
                 System.out.println("\n\uD83D\uDCB0 ¿Desea pago fraccionado? (S/N): ");
                 try {
                     String respuesta = sc.next().trim().toUpperCase();
-                    sc.nextLine(); // Limpiar buffer
 
                     if (respuesta.equals("S")) {
                         isPagoFraccionado = true;
@@ -712,12 +715,13 @@ public class PruebaContratacion {
                     } else if (respuesta.equals("N")) {
                         isPagoFraccionado = false;
                         opcionValida = true;
-                    } else {
+                    } else if(respuesta.isEmpty()){
+                        System.out.println("⚠️ La respuesta debe ser S/N ⚠️");
+                    } else{
                         System.out.println("⚠️ La respuesta debe ser S/N ⚠️");
                     }
                 } catch (Exception e) {
                     System.out.println("⚠️ Entrada inválida. Ingrese S/N ⚠️");
-                    sc.nextLine();
                 }
             }
 
