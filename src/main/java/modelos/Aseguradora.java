@@ -116,6 +116,7 @@ public class Aseguradora {
         return  "Nombre: " + getNombre() +
                 "\nDireccion: " + getDireccion() +
                 "\nTelefono: " + getTelefono()+
-                "\nVehículos asegurados: ▼" + "\n"+"\t"+getVehiculosAsegurados();
+                "\nVehículos asegurados: ▼" + "\n"+"\t"+getVehiculosAsegurados() +
+                "\nLista de pólizas: ▼" +"\n\t"+ getListaPolizas();
     }
 }

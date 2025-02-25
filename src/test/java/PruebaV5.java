@@ -136,13 +136,6 @@ public class PruebaV5 {
         listaVehiculos.add(v1);
         listaVehiculos.add(v2);
         listaVehiculos.add(v3);
-        listaVehiculos.add(v4);
-        listaVehiculos.add(v5);
-        listaVehiculos.add(v6);
-        listaVehiculos.add(v7);
-        listaVehiculos.add(v8);
-        listaVehiculos.add(v9);
-        listaVehiculos.add(v10);
 
 
         //Coche
@@ -193,15 +186,15 @@ public class PruebaV5 {
         System.out.println(poliza1);
 
         UtilidadesAseguradora util = new UtilidadesAseguradora();
+
         //Aseguradora
         Aseguradora asg = new Aseguradora("ASG",dir3,"658541214",listaVehiculos);
         System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Agregando póliza a la aseguradora \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
         asg.addPoliza(poliza1);
+        asg.addPoliza(poliza2);
         System.out.println(asg);
 
         System.out.println("\n\uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC Eliminando póliza a la aseguradora \uD83D\uDCDC\uD83D\uDCDC\uD83D\uDCDC\n");
-        asg.addPoliza(poliza2);
-        System.out.println(asg);
         asg.removePoliza(poliza2.getNumero());
         System.out.println(asg);
 
